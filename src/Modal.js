@@ -31,7 +31,7 @@ class Modal extends Component {
             onCancel={this.onCancel}
             cancelText= {<span>CLOSE <Icon type="stop"/></span>}
             visible={this.state.visible}>
-            <table className="tableWidth">
+            <table className="modalWidth">
             <tbody>
                 <tr>
                     <th>Date</th>

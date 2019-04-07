@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 body {
   margin: 0;
   padding: 0;
@@ -19,18 +21,28 @@ code {
 }
 
 .tableWidth {
-  width: 95vw;
-  height: 5vh;
+  width: 100vw;
+  height: 10vh;
   font-style: italic;
   font-family: 'Times New Roman', Times, serif;
-  border: 1px solid navy;
+  border: 1px solid #153243;
+  color: #0D0221;
 }
 
 tr {
-  border: 1px solid navy;
+  border: 1px solid #153243;
+  background-color: #D0E2F6;
 }
 
 .headers {
-border: 1px solid navy;
-background-color: lightsteelblue;
+border: 1px solid #153243;
+background-color: #98BFEB;
+}
+
+.modalWidth {
+  width: 70vw;
+  height: 3vh;
+  font-style: italic;
+  font-family: 'Times New Roman', Times, serif;
+
 }
