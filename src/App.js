@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Table from './Table.js';
 import { Divider } from 'antd';
+import Axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -13,7 +14,7 @@ class App extends Component {
       doctor: '',
       insurance: '',
       amountOwed: '',
-      arrayOfObjects: [
+      patients: [
         {
           patientId: '653982',
           firstName: 'Marley',
@@ -34,11 +35,15 @@ class App extends Component {
       ]
     }
   }
-    onDelete = (deletedIndex) => {
-      let tempArray= this.state.arrayOfObjects
-      tempArray.splice(deletedIndex, 1)
-      this.setState({arrayOfObjects: tempArray})
+    onDelete = (i) => {
+      Axios.delete(`/api/deletePatient/${i}`).then((resp) => {console.log(resp)
+      this.setState({patients: resp.data})
+      })
     }
+     // let tempArray= this.state.patients
+      //tempArray.splice(deletedIndex, 1)
+      //this.setState({patients: tempArray})
+    
 
     onClear = () => {
       this.setState({
@@ -56,22 +61,30 @@ class App extends Component {
       this.setState({[stateProperty]: e.target.value})
     }
 
-    addUser = (e) => {
-      let tempArr = this.state.arrayOfObjects;
-      e.preventDefault();
-      const userObject = {
-        patientId: this.state.patientId,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        doctor: this.state.doctor,
-        insurance: this.state.insurance,
-        amountOwed: this.state.amountOwed,
-        charges: []
-      }
-      tempArr.push(userObject);
-      this.setState({arrayOfObjects: tempArr})
-      this.onClear()
+    addUser = (patient) => {
+      Axios.post('/api/addPatient', {
+        patient
+      }).then((resp) => {console.log(resp)
+      this.setState({patients: resp.data})
+      })
+
+
     }
+      // let tempArr = this.state.patients;
+      // e.preventDefault();
+      // const userObject = {
+      //   patientId: this.state.patientId,
+      //   firstName: this.state.firstName,
+      //   lastName: this.state.lastName,
+      //   doctor: this.state.doctor,
+      //   insurance: this.state.insurance,
+      //   amountOwed: this.state.amountOwed,
+      //   charges: []
+      // }
+      // tempArr.push(userObject);
+      // this.setState({patients: tempArr})
+      // this.onClear()
+    
   
   render() {
     return (
@@ -119,7 +132,7 @@ class App extends Component {
       <Divider />
       <Table 
         onDelete={this.onDelete}
-        stuff={this.state.arrayOfObjects}
+        stuff={this.state.patients}
       />
       </div>
     );
