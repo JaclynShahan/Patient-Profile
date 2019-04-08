@@ -19,7 +19,18 @@ class Modal extends Component {
         const bodyStyle = {
             height: '50vh'
         }
+        const modalRows= this.props.chargeInfo.map((day, chargeIndex) => {
+            return(
+                <tr key={chargeIndex}>
+                <td>{day.date}</td>
+                <td>{day.charge}</td>
+                <td>{day.amountDue}</td>
+                <td>{day.amountPaid}</td>
+                <td>{day.amountOwed}</td>
 
+                </tr>
+            )
+        })
     return(
         <div>
             <Button onClick={() => this.setState({visible: true})}><Icon type="dollar"/></Button>
@@ -35,7 +46,7 @@ class Modal extends Component {
             <tbody>
                 <tr>
                     <th>Date</th>
-                    <th>Charges</th>
+                    <th>Charge</th>
                     <th>Amount Due</th>
                     <th>Amount Paid</th>
                     <th>Amount Owed</th>
@@ -57,6 +68,7 @@ class Modal extends Component {
                         <input></input>
                     </td>
                 </tr>
+                {modalRows}
             </tbody>
             </table>
             </AntModal>

@@ -14,7 +14,7 @@ class App extends Component {
       doctor: '',
       insurance: '',
       amountOwed: '',
-      patients: []
+      patients: [],
     }
   }
   componentDidMount = () => {
@@ -87,6 +87,7 @@ class App extends Component {
     return (
       <div className="App">
       <form onSubmit={(e) => this.addUser(e)}>
+      <br></br>
       <input
       className='inputWidths'
       value={this.state.patientId}

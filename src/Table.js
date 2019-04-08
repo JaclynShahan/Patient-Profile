@@ -1,15 +1,54 @@
 import React, { Component } from 'react';
 import Modal from './Modal.js';
 import { Button, Icon, Popconfirm } from 'antd';
+import Axios from 'axios';
 
 class Table extends Component {
     constructor() {
         super()
         this.state = {
+            charges: [ {
+                date: '',
+                charge: '',
+                amountDue: '',
+                amountPaid: '',
+                amountOwed: ''
+            }]
             
         }
     }
- 
+    componentDidMount = () => {
+        Axios.get(`/api/getCharges`).then((resp) => {console.log(resp)
+       this.setState({charges: resp.data})
+        })
+      }
+
+      addCharge = (e) => {
+
+        e.preventDefault()
+        Axios.post('/api/addCharge', {
+           charge: { 
+            date: this.state.date,
+            charges: this.state.charges,
+            amountDue: this.state.amountDue,
+            amountPaid: this.state.amountPaid,
+            amountOwed: this.state.amountOwed,
+           }
+        }).then((resp) => {
+          this.onClear()
+          console.log(resp)
+        this.setState({charges: resp.data})
+        })
+  
+      }
+    onDelete = (i) => {
+        Axios.delete(`/api/deleteCharge/${i}`).then((resp) => {console.log(resp)
+        this.setState({charges: resp.data})
+        })
+      }
+
+
+
 
     render() {
         const tableRows= this.props.stuff.map((here, indexPoint) => {
@@ -24,7 +63,10 @@ class Table extends Component {
                 <td>{here.doctor}</td>
                 <td>{here.insurance}</td>
                 <td>{here.amountOwed}</td>
-                <td><Modal /></td>
+                <td><Modal 
+                onDelete={this.onDelete}
+                chargeInfo={this.state.charges}
+                /></td>
                 <td><Button><Icon type="folder"/></Button></td>
                 </tr>
             )}

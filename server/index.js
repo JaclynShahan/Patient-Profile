@@ -48,6 +48,9 @@ app.get('/api/test', (req, res) => {
 app.get(`/api/getPatients`, (req, res) => {
     getPatients(res)
 })
+app.get('/api/getCharges' , (req, res) => {
+    getCharges(res)
+})
 
 app.get('/api/patientSearch', (req, res) => {
     console.log(req.query)
@@ -67,6 +70,17 @@ app.post('/api/addPatient', (req, res) => {
 
 })
 
+app.post('/api/addCharge', (req, res) => {
+    console.log(req.body)
+    // patients.push(req.body.patient)
+    r.table('patients').insert(req.body.charge)
+    .run(connection, (err, data) => {
+        console.log(data)
+        getCharges(res)
+    })
+
+})
+
 app.delete('/api/deletePatient/:id', (req, res) => {
     console.log(req.params)
 r.table('patients').get(req.params.id).delete().run(connection, (err, data) => {
@@ -74,6 +88,14 @@ r.table('patients').get(req.params.id).delete().run(connection, (err, data) => {
     getPatients(res)
 })
    // patients.splice(req.params.id, 1)
+})
+
+app.delete('api/deleteCharge/:id', (req, res) => {
+    console.log(req.params)
+    r.table('charges').get(req.params.id).delete().run(connection, (err, data) => {
+        console.log(data)
+        getCharges(res)
+    })
 })
 const port = 4000;
 app.listen(port, () => console.log(`Server listening on port ${port}`));
