@@ -15,7 +15,7 @@ class Table extends Component {
         const tableRows= this.props.stuff.map((here, indexPoint) => {
             return(
                 <tr key={indexPoint}>
-                <Popconfirm onConfirm={()=> this.props.onDelete(indexPoint)} title='Are you sure?'>
+                <Popconfirm onConfirm={()=> this.props.onDelete(here.id)} title='Are you sure?'>
                 <td><Button><Icon type="delete"/></Button></td>
                 </Popconfirm>
                 <td>{here.patientId}</td>

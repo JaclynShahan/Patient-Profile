@@ -14,26 +14,13 @@ class App extends Component {
       doctor: '',
       insurance: '',
       amountOwed: '',
-      patients: [
-        {
-          patientId: '653982',
-          firstName: 'Marley',
-          lastName: 'Foster',
-          doctor: 'Brown',
-          insurance: 'Cigna',
-          amountOwed: '$20.00',
-          charges: [
-            {
-              date: '4/5/2019',
-              charges: '$283.00',
-              amountDue: '$20.00',
-              amountPaid: '$20.00',
-              amountOwed: '$0.00'
-            }
-          ]
-        }
-      ]
+      patients: []
     }
+  }
+  componentDidMount = () => {
+    Axios.get(`/api/getPatients`).then((resp) => {console.log(resp)
+   this.setState({patients: resp.data})
+    })
   }
     onDelete = (i) => {
       Axios.delete(`/api/deletePatient/${i}`).then((resp) => {console.log(resp)
@@ -61,13 +48,23 @@ class App extends Component {
       this.setState({[stateProperty]: e.target.value})
     }
 
-    addUser = (patient) => {
+    addUser = (e) => {
+
+      e.preventDefault()
       Axios.post('/api/addPatient', {
-        patient
-      }).then((resp) => {console.log(resp)
+         patient: { 
+          patientId: this.state.patientId,
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          doctor: this.state.doctor,
+          insurance: this.state.insurance,
+          amountOwed: this.state.amountOwed
+         }
+      }).then((resp) => {
+        this.onClear()
+        console.log(resp)
       this.setState({patients: resp.data})
       })
-
 
     }
       // let tempArr = this.state.patients;
