@@ -53,19 +53,40 @@ class Modal extends Component {
                 </tr>
                 <tr>
                     <td>
-                        <input></input>
+                        <input
+                        // value={day.date}
+                         placeholder='Date'
+                        // onChange={e => this.props.addCharge(e, 'date')}
+                        
+                        />
                     </td>
                     <td>
-                        <input></input>
+                        <input
+                           //value={day.charge}
+                           placeholder='Charges'
+                          // onChange={e => this.props.addCharge(e, 'charge')}
+                        />
                     </td>
                     <td>
-                        <input></input>
+                        <input
+                           //value={day.amountDue}
+                           placeholder='Amount Due'
+                           //onChange={e => this.props.addCharge(e, 'amountDue')}
+                        />
                     </td>
                     <td>
-                        <input></input>
+                        <input
+                          // value={day.amountPaid}
+                           placeholder='Amount Paid'
+                          // onChange={e => this.props.addCharge(e, 'amountPaid')}
+                        />
                     </td>
                     <td>
-                        <input></input>
+                        <input
+                           //value={day.amountOwed}
+                           placeholder='Amount Owed'
+                           //onChange={e => this.props.addCharge(e, 'amountOwed')}
+                        />
                     </td>
                 </tr>
                 {modalRows}
