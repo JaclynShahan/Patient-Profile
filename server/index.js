@@ -81,6 +81,12 @@ app.post('/api/addCharge', (req, res) => {
 
 })
 
+app.put('api/updateCharges', (req, res) => {
+    console.log(req.body)       //this is the request body coming through
+    r.table('patients').get(req.body.id)('charges').update({charges: req.body.tempArr})    //target patients table, get patient that you want to update by id, then update charges array
+    getPatients(res)    //send the response back using reusable function
+})
+
 app.delete('/api/deletePatient/:id', (req, res) => {
     console.log(req.params)
 r.table('patients').get(req.params.id).delete().run(connection, (err, data) => {

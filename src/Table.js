@@ -52,18 +52,18 @@ class Table extends Component {
 
 
     render() {
-        const tableRows= this.props.stuff.map((here, indexPoint) => {
+        const tableRows= this.props.users.map((person, indexPoint) => {
             return(
                 <tr key={indexPoint}>
-                <Popconfirm onConfirm={()=> this.props.onDelete(here.id)} title='Are you sure?'>
+                <Popconfirm onConfirm={()=> this.props.onDelete(person.id)} title='Are you sure?'>
                 <td><Button><Icon type="delete"/></Button></td>
                 </Popconfirm>
-                <td>{here.patientId}</td>
-                <td>{here.firstName}</td>
-                <td>{here.lastName}</td>
-                <td>{here.doctor}</td>
-                <td>{here.insurance}</td>
-                <td>{here.amountOwed}</td>
+                <td>{person.patientId}</td>
+                <td>{person.firstName}</td>
+                <td>{person.lastName}</td>
+                <td>{person.doctor}</td>
+                <td>{person.insurance}</td>
+                <td>{person.amountOwed}</td>
                 <td><Modal 
                 onDelete={this.onDelete}
                 chargeInfo={this.state.charges}

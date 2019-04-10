@@ -58,7 +58,8 @@ class App extends Component {
           lastName: this.state.lastName,
           doctor: this.state.doctor,
           insurance: this.state.insurance,
-          amountOwed: this.state.amountOwed
+          amountOwed: this.state.amountOwed,
+          charges: []
          }
       }).then((resp) => {
         this.onClear()
@@ -66,6 +67,16 @@ class App extends Component {
       this.setState({patients: resp.data})
       })
 
+    }
+    addCharges = (i, obj) => {          //passing in index and charge object
+      let tempArr = this.state.patients[i].charges;
+      tempArr.push(obj);
+      Axios.put('/api/updateCharges/', {    //i make an update request to update this users id with this new array
+        tempArr: tempArr,
+         id: this.state.patients[i].id
+      }).then((resp) => {console.log(resp)
+      this.setState({patients: resp.data})
+      })
     }
       // let tempArr = this.state.patients;
       // e.preventDefault();
@@ -130,7 +141,7 @@ class App extends Component {
       <Divider />
       <Table 
         onDelete={this.onDelete}
-        stuff={this.state.patients}
+        users={this.state.patients}
       />
       </div>
     );
