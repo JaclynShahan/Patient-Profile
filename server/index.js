@@ -73,7 +73,7 @@ app.post('/api/addPatient', (req, res) => {
 app.post('/api/addCharge', (req, res) => {
     console.log(req.body)
     // patients.push(req.body.patient)
-    r.table('patients').insert(req.body.charge)
+    r.table('charges').insert(req.body.charge)
     .run(connection, (err, data) => {
         console.log(data)
         getCharges(res)

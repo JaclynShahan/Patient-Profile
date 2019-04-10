@@ -3,6 +3,7 @@ import './App.css';
 import Table from './Table.js';
 import { Divider } from 'antd';
 import Axios from 'axios';
+import Exercises from './Exercises.js';
 
 class App extends Component {
   constructor() {
@@ -49,8 +50,7 @@ class App extends Component {
     }
 
     addUser = (e) => {
-
-      e.preventDefault()
+         e.preventDefault()
       Axios.post('/api/addPatient', {
          patient: { 
           patientId: this.state.patientId,

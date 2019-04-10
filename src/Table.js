@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Modal from './Modal.js';
 import { Button, Icon, Popconfirm } from 'antd';
 import Axios from 'axios';
+import Exercises from './Exercises.js';
 
 class Table extends Component {
     constructor() {
@@ -26,10 +27,10 @@ class Table extends Component {
       addCharge = (e) => {
 
         e.preventDefault()
-        Axios.post('/api/addCharge', {
-           charge: { 
+        Axios.post('/api/addCharge',  {
+           charges: { 
             date: this.state.date,
-            charges: this.state.charges,
+            charge: this.state.charges,
             amountDue: this.state.amountDue,
             amountPaid: this.state.amountPaid,
             amountOwed: this.state.amountOwed,
@@ -67,7 +68,7 @@ class Table extends Component {
                 onDelete={this.onDelete}
                 chargeInfo={this.state.charges}
                 /></td>
-                <td><Button><Icon type="folder"/></Button></td>
+                <td><Exercises /></td>
                 </tr>
             )}
                  
