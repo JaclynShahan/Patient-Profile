@@ -32,16 +32,16 @@ class Exercises extends Component {
             cancelText= {<span>CLOSE <Icon type="stop"/></span>}
             visible={this.state.visible}>
                <div class="topnav" id="myTopnav">
-                    <a href="#home" class="active">Lumbar</a>
-                    <a href="#news">Cervical</a>
+                    <a href="https://youtu.be/7qHInWs_3mY" target="_blank">Lumbar</a>
+                    <a href="https://youtu.be/0SLairHEutE" target="_blank">Cervical</a>
              <div class="dropdown">
                      <button class="dropbtn">Upper Extremities
                      <i class="fa fa-caret-down"></i>
                      </button>
                   <div class="dropdown-content">
-                    <a href="#">Shoulders</a>
-                    <a href="#">Biceps</a>
-                    <a href="#">Upper Torso</a>
+                    <a href="https://youtu.be/fpqMU88DfyE">Shoulders</a>
+                    <a href="https://youtu.be/b7lqYyQVPhw">Biceps</a>
+                    <a href="https://youtu.be/DaULkpm71Bg">Upper Torso</a>
                     </div>
                     </div>
                  <div class="dropdown">
@@ -49,13 +49,23 @@ class Exercises extends Component {
                      <i class="fa fa-caret-down"></i>
                      </button>
                     <div class="dropdown-content">
-                        <a href="#">Hips</a>
-                        <a href="#">Hamstrings</a>
-                        <a href="#">Knees</a>
-                        <a href="#">Ankles</a>
-                        <a href="#">Feet</a>
+                        <a href="https://youtu.be/z1fzp7aD6gY" target="_blank">Hips</a>
+                        <a href="https://youtu.be/tUQ86Ok69gY" target="_blank">Hamstrings</a>
+                        <a href="https://youtu.be/4UxUfRb619A" target="_blank">Knees</a>
+                        <a href="https://youtu.be/hK_Tk69GU_s" target="_blank">Ankles</a>
+                        <a href="https://youtu.be/FtbKGWfQVCk" target="_blank">Feet</a>
                     </div>
                 </div> 
+                <div class="dropdown">
+                   <button class="dropbtn">Occupational Therapy
+                    <i class="fa fa-caret-down"></i>
+                   </button>
+                   <div class="dropdown-content">
+                        <a href="https://youtu.be/bNkjHdgV0hg" target="_blank">Elbows</a>
+                        <a href="https://youtu.be/cxYiRrRMTtU" target="_blank">Wrists</a>
+                        <a href="https://youtu.be/xQrP97h4MMg" target="_blank">Fingers</a>
+                   </div>
+                   </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
                 </div>
             </AntModal>
