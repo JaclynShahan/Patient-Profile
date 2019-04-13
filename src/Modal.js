@@ -1,18 +1,47 @@
 import React, { Component } from 'react';
 import { Button, Modal as AntModal, Icon} from 'antd';
+import Axios from 'axios';
 
 class Modal extends Component {
     constructor() {
         super()
         this.state= {
             visible: false,
+            date: '',
+            charge: '',
+            amountDue: '',
+            amountPaid: '',
+            amountOwed: ''
         }
     }
+    onClear = () => {
+        this.setState({
+          date: '',
+          charge: '',
+          amountDue: '',
+          amountPaid: '',
+          amountOwed: ''
+  
+        })
+      }
+
     onOk = () => {
+        var charge = {
+            date: this.state.date,
+            charge: this.state.charge,
+            amountDue: this.state.amountDue,
+            amountPaid: this.state.amountPaid,
+            amountOwed: this.state.amountOwed
+        }
+        this.props.addCharges(this.props.patientIndex, charge)
         this.setState({visible: false});
+        this.onClear()
     }
     onCancel = () => {
         this.setState({visible: false});
+    }
+    handleCharge = (e, stateProperty) => {
+        this.setState({[stateProperty]: e.target.value})
     }
 
     render() {
@@ -42,7 +71,7 @@ class Modal extends Component {
             onCancel={this.onCancel}
             cancelText= {<span>CLOSE <Icon type="stop"/></span>}
             visible={this.state.visible}>
-            <table className="modalWidth">
+            <table className="modalWidth, chargeTable">
             <tbody>
                 <tr>
                     <th>Date</th>
@@ -54,38 +83,43 @@ class Modal extends Component {
                 <tr>
                     <td>
                         <input
-                        // value={day.date}
+                        className='chargeStyles'
+                         value={this.state.date}
                          placeholder='Date'
-                        // onChange={e => this.props.addCharge(e, 'date')}
+                         onChange={(e) => this.handleCharge(e, 'date')}
                         
                         />
                     </td>
                     <td>
                         <input
-                           //value={day.charge}
+                        className='chargeStyles'
+                           value={this.state.charge}
                            placeholder='Charges'
-                          // onChange={e => this.props.addCharge(e, 'charge')}
+                            onChange={(e) => this.handleCharge(e, 'charge')}
                         />
                     </td>
                     <td>
                         <input
-                           //value={day.amountDue}
+                        className='chargeStyles'
+                           value={this.state.amountDue}
                            placeholder='Amount Due'
-                           //onChange={e => this.props.addCharge(e, 'amountDue')}
+                           onChange={(e) => this.handleCharge(e, 'amountDue')}
                         />
                     </td>
                     <td>
                         <input
-                          // value={day.amountPaid}
+                        className='chargeStyles'
+                          value={this.state.amountPaid}
                            placeholder='Amount Paid'
-                          // onChange={e => this.props.addCharge(e, 'amountPaid')}
+                           onChange={(e) => this.handleCharge(e, 'amountPaid')}
                         />
                     </td>
                     <td>
                         <input
-                           //value={day.amountOwed}
+                            className='chargeStyles'
+                           value={this.state.amountOwed}
                            placeholder='Amount Owed'
-                           //onChange={e => this.props.addCharge(e, 'amountOwed')}
+                           onChange={(e) => this.handleCharge(e, 'amountOwed')}
                         />
                     </td>
                 </tr>

@@ -9,11 +9,7 @@ class Table extends Component {
         super()
         this.state = {
             charges: [ {
-                date: '',
-                charge: '',
-                amountDue: '',
-                amountPaid: '',
-                amountOwed: ''
+              
             }]
             
         }
@@ -24,24 +20,26 @@ class Table extends Component {
         })
       }
 
-      addCharge = (e) => {
+     
+ 
+    //   addCharge = (e) => {
 
-        e.preventDefault()
-        Axios.post('/api/addCharge',  {
-           charges: { 
-            date: this.state.date,
-            charge: this.state.charges,
-            amountDue: this.state.amountDue,
-            amountPaid: this.state.amountPaid,
-            amountOwed: this.state.amountOwed,
-           }
-        }).then((resp) => {
-          this.onClear()
-          console.log(resp)
-        this.setState({charges: resp.data})
-        })
+    //     e.preventDefault()
+    //     Axios.post('/api/addCharge',  {
+    //        charges: { 
+    //         date: this.state.date,
+    //         charge: this.state.charges,
+    //         amountDue: this.state.amountDue,
+    //         amountPaid: this.state.amountPaid,
+    //         amountOwed: this.state.amountOwed,
+    //        }
+    //     }).then((resp) => {
+    //       this.onClear()
+    //       console.log(resp)
+    //     this.setState({charges: resp.data})
+    //     })
   
-      }
+    //   }
     onDelete = (i) => {
         Axios.delete(`/api/deleteCharge/${i}`).then((resp) => {console.log(resp)
         this.setState({charges: resp.data})
@@ -65,8 +63,10 @@ class Table extends Component {
                 <td>{person.insurance}</td>
                 <td>{person.amountOwed}</td>
                 <td><Modal 
+                patientIndex={indexPoint}
                 onDelete={this.onDelete}
-                chargeInfo={this.state.charges}
+                chargeInfo={person.charges}
+                addCharges={this.props.addCharges}
                 /></td>
                 <td><Exercises /></td>
                 </tr>

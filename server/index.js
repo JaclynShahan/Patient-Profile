@@ -49,7 +49,7 @@ app.get(`/api/getPatients`, (req, res) => {
     getPatients(res)
 })
 app.get('/api/getCharges' , (req, res) => {
-    getCharges(res)
+    getPatients(res)
 })
 
 app.get('/api/patientSearch', (req, res) => {
@@ -76,15 +76,18 @@ app.post('/api/addCharge', (req, res) => {
     r.table('charges').insert(req.body.charge)
     .run(connection, (err, data) => {
         console.log(data)
-        getCharges(res)
+        getPatients(res)
     })
 
 })
 
-app.put('api/updateCharges', (req, res) => {
+app.put('/api/updateCharges', (req, res) => {
     console.log(req.body)       //this is the request body coming through
-    r.table('patients').get(req.body.id)('charges').update({charges: req.body.tempArr})    //target patients table, get patient that you want to update by id, then update charges array
-    getPatients(res)    //send the response back using reusable function
+    r.table('patients').get(req.body.id).update({charges: req.body.tempArr})    //target patients table, get patient that you want to update by id, then update charges array
+    .run(connection, (err, data) => {
+        console.log(data)
+        getPatients(res)
+    })   //send the response back using reusable function
 })
 
 app.delete('/api/deletePatient/:id', (req, res) => {
@@ -100,7 +103,7 @@ app.delete('api/deleteCharge/:id', (req, res) => {
     console.log(req.params)
     r.table('charges').get(req.params.id).delete().run(connection, (err, data) => {
         console.log(data)
-        getCharges(res)
+        getPatients(res)
     })
 })
 const port = 4000;

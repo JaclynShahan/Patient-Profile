@@ -99,42 +99,46 @@ class App extends Component {
       <div className="App">
       <form onSubmit={(e) => this.addUser(e)}>
       <br></br>
+      <div className='centerContent'>
+      <div className='inputOrganizer'>
       <input
-      className='inputWidths'
+      className='inputWidths inputStyles'
       value={this.state.patientId}
       placeholder='Patient ID'
       onChange={e => this.textChangeHandler(e, 'patientId')}
       />
       <input
-      className='inputWidths'
+      className='inputWidths inputStyles'
       value={this.state.firstName}
       placeholder='First Name'
       onChange={e => this.textChangeHandler(e, 'firstName')}
       />
       <input 
-      className='inputWidths'
+      className='inputWidths inputStyles'
       value={this.state.lastName}
       placeholder='Last Name'
       onChange={e => this.textChangeHandler(e, 'lastName')}
       />
       <input
-      className='inputWidths'
+      className='inputWidths inputStyles'
       value={this.state.doctor}
       placeholder='Doctor'
       onChange={e => this.textChangeHandler(e, 'doctor')}
       />
       <input 
-      className='inputWidths'
+      className='inputWidths inputStyles'
       value={this.state.insurance}
       placeholder='Insurance'
       onChange={e => this.textChangeHandler(e, 'insurance')}
       />
       <input
-      className='inputWidths'
+      className='inputWidths inputStyles'
       value={this.state.amountOwed}
       placeholder='Amount Owed'
       onChange={e => this.textChangeHandler(e, 'amountOwed')}
       />
+      </div>
+      </div>
     <button type='submit'>SUBMIT</button>
 
       </form>
@@ -142,6 +146,7 @@ class App extends Component {
       <Table 
         onDelete={this.onDelete}
         users={this.state.patients}
+        addCharges={this.addCharges}
       />
       </div>
     );

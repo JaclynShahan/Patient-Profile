@@ -39,9 +39,9 @@ class Exercises extends Component {
                      <i class="fa fa-caret-down"></i>
                      </button>
                   <div class="dropdown-content">
-                    <a href="https://youtu.be/fpqMU88DfyE">Shoulders</a>
-                    <a href="https://youtu.be/b7lqYyQVPhw">Biceps</a>
-                    <a href="https://youtu.be/DaULkpm71Bg">Upper Torso</a>
+                    <a href="https://youtu.be/fpqMU88DfyE" target="_blank">Shoulders</a>
+                    <a href="https://youtu.be/b7lqYyQVPhw" target="_blank">Biceps</a>
+                    <a href="https://youtu.be/DaULkpm71Bg" target="_blank">Upper Torso</a>
                     </div>
                     </div>
                  <div class="dropdown">
