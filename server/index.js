@@ -106,5 +106,7 @@ app.delete('api/deleteCharge/:id', (req, res) => {
         getPatients(res)
     })
 })
+
+
 const port = 4000;
 app.listen(port, () => console.log(`Server listening on port ${port}`));

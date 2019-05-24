@@ -62,7 +62,7 @@ class Modal extends Component {
         })
     return(
         <div>
-            <Button onClick={() => this.setState({visible: true})}><Icon type="dollar"/></Button>
+            <Button onClick={() => this.setState({visible: true})}><Icon className="iconDollar" type="dollar"/></Button>
             <AntModal
             width='90vw'
             bodystyle={bodyStyle}

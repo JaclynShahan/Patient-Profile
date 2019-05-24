@@ -21,7 +21,7 @@ class Exercises extends Component {
         }
         return ( 
           <div>
-              <Button onClick={() => this.setState({visible: true})}><Icon type="folder"/></Button>
+              <Button onClick={() => this.setState({visible: true})}><Icon className="iconFolder" type="folder"/></Button>
             <AntModal
             width='90vw'
             height='100vh'

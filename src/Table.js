@@ -54,7 +54,7 @@ class Table extends Component {
             return(
                 <tr key={indexPoint}>
                 <Popconfirm onConfirm={()=> this.props.onDelete(person.id)} title='Are you sure?'>
-                <td><Button><Icon type="delete"/></Button></td>
+                <td><Button><Icon className="iconTrash" type="delete"/></Button></td>
                 </Popconfirm>
                 <td>{person.patientId}</td>
                 <td>{person.firstName}</td>

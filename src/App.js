@@ -3,7 +3,7 @@ import './App.css';
 import Table from './Table.js';
 import { Divider } from 'antd';
 import Axios from 'axios';
-import Exercises from './Exercises.js';
+
 
 class App extends Component {
   constructor() {
@@ -78,20 +78,6 @@ class App extends Component {
       this.setState({patients: resp.data})
       })
     }
-      // let tempArr = this.state.patients;
-      // e.preventDefault();
-      // const userObject = {
-      //   patientId: this.state.patientId,
-      //   firstName: this.state.firstName,
-      //   lastName: this.state.lastName,
-      //   doctor: this.state.doctor,
-      //   insurance: this.state.insurance,
-      //   amountOwed: this.state.amountOwed,
-      //   charges: []
-      // }
-      // tempArr.push(userObject);
-      // this.setState({patients: tempArr})
-      // this.onClear()
     
   
   render() {
@@ -139,7 +125,7 @@ class App extends Component {
       />
       </div>
       </div>
-    <button type='submit'>SUBMIT</button>
+    <button className="button" type='submit'>SUBMIT</button>
 
       </form>
       <Divider />
