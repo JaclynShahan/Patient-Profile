@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-background-color: #EEF4FC;
+  background-color: #eef4fc;
 }
 
 .button {
@@ -11,9 +11,5 @@ background-color: #EEF4FC;
   font-weight: bold;
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
-  border: 3px solid #98BFEB;
- 
+  border: 3px solid #98bfeb;
 }
-
-
-
